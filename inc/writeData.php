@@ -39,7 +39,8 @@ try {
             ':D)'=>'img/08.gif',
             ':0'=>'img/09.gif',
             ':¨¨'=>'img/10.gif',
-            '..°°'=>'img/11.gif'
+            '..°°'=>'img/11.gif',
+            ';)'=>'img/12.gif'
             ]; 
   
             foreach($smileys as $key=>$value):

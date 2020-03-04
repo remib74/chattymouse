@@ -55,28 +55,28 @@
             </main>
         <div id="msgConsole">
             <div id="emoji">
-            <?php $smileys=[[
-            ':)'=>'img/001.gif',
-            ':(('=>'img/002.gif',
-            ':('=>'img/003.gif',
-            '%|'=>'img/004.gif',
-            '00°'=>'img/005.gif',
-            '^^)'=>'img/006.gif',
-            '++0'=>'img/007.gif',
-            '8)'=>'img/008.gif',
-            ':D)'=>'img/009.gif',
-            ':0'=>'img/0010.gif',
-            ':¨¨'=>'img/011.gif',
-            '..°°'=>'img/012.gif']
-            ]; 
-            $smileysPath=$smileys[0][':)'];
-            str_replace(":)", "img/".$smileysPath.".gif", "llll");
+            <?php 
+        $smileys=[
+            ':)'=>'img/00.gif',
+            ':(('=>'img/01.gif',
+            ':('=>'img/02.gif',
+            '%|'=>'img/03.gif',
+            '00°'=>'img/04.gif',
+            '^^)'=>'img/05.gif',
+            '++0'=>'img/06.gif',
+            '8)'=>'img/07.gif',
+            ':D)'=>'img/08.gif',
+            ':0'=>'img/09.gif',
+            ':¨¨'=>'img/10.gif',
+            '..°°'=>'img/11.gif',
+            ';)'=>'img/12.gif'
+            ];
+
             
             ?>
             <p>Emojis :<?php 
             
-            
-            for($i=0;$i<=11;$i++):
+            for($i=0;$i<=12;$i++):
                 $imgSrc="img/0$i.gif";
                 if($i>=10){
                     echo "<div><a href='#' onclick='replaceSmiley($i);'><img src ='img/$i.gif'></a></div>"; 
