@@ -4,6 +4,6 @@ const auto_refresh = setInterval(
     $('#mainview').load('index.php #worldUser');
     $('#frmwriteNck').load('index.php #nickname');
   }, 3000 // update the content
-  
+
   );
 

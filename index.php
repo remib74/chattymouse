@@ -68,18 +68,22 @@
             ':0'=>'img/0010.gif',
             ':¨¨'=>'img/011.gif',
             '..°°'=>'img/012.gif']
-            ]; ?>
+            ]; 
+            $smileysPath=$smileys[0][':)'];
+            str_replace(":)", "img/".$smileysPath.".gif", "llll");
+            
+            ?>
             <p>Emojis :<?php 
             
             
-            for($i=1;$i<=12;$i++):
+            for($i=0;$i<=11;$i++):
                 $imgSrc="img/0$i.gif";
                 if($i>=10){
-                    echo "<div><a href='#'><img src ='img/$i.gif'></a></div>"; 
+                    echo "<div><a href='#' onclick='replaceSmiley($i);'><img src ='img/$i.gif'></a></div>"; 
                 }
                 else{
                 
-                echo "<div><a href='#' onclick='replaceSmiley(11);'><img src ='$imgSrc'></a></div>"; 
+                echo "<div><a href='#' onclick='replaceSmiley($i);'><img src ='$imgSrc' id='$i'></a></div>"; 
                 }
             endfor;?></p>
             </div>
@@ -89,7 +93,7 @@
                 <div id="frmwriteNck">
                 <input type="text" id="nickname" maxlength="15" name="nickname" class="frminput" value="<?php if(isset($_COOKIE['userOnline'])):echo($_COOKIE['userOnline']);endif;?>" readonly>
                 </div>
-                <input type="textarea" rows="5" cols="50" minlength="1" maxlength="3img/00" id="zonetxt" name="zonetxt" class="frminput" value=""></textarea>
+                <input type="textarea" rows="5" cols="50" minlength="1" maxlength="300" id="zonetxt" name="zonetxt" class="frminput" value=""></textarea>
                 <input type="submit" name="sendit" id="sendit" value="send" onclick="verif(frmwrite);">
                 <input type="reset" name="resetit" id="resetit" value="reset form">
                 </form>
