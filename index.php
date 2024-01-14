@@ -17,15 +17,18 @@
 <head>
 <meta charset="UTF-8">
 <!--on charge les scripts js dont jquery qui sert à rafraichir la page refresh.js-->
-<script src="js/refresh.js" type="text/javascript"></script>
+<!--<script src="js/refresh.js" type="text/javascript"></script>-->
 <script src="js/verif.js" type="text/javascript"></script>
 <script src="js/jquery-3.4.1.min.js" type="text/javascript"></script>
 <script src="js/replaceSmiley.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
 <link href="css/reset.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 
+
 </head>
-    <body>
+    <body >
     <!--ouverture de connexion à la base de données par pdo-->
     <?php include 'inc/connect.php';?>
     <header>
@@ -33,26 +36,15 @@
         </header>
         <main id="mainview">
             <div id="worldUser">
-            <div id="wordviewer">
-        <!-- requête mysql pour afficher les messages-->
-            <?php 
-    
-      $retour = $base->query('SELECT * FROM userandmessage ORDER BY id DESC');
-      $nb_datas =$retour->fetchAll();
-      //var_dump($nb_data);
-    foreach ($nb_datas as $nb_data) : ?>
-    
-    <?php echo $nb_data[1]." ".$nb_data[2]."<strong> ". $nb_data[3]."</strong><br/>";?>
-    <?php endforeach;?>
-
-  </p>
-            </div>
+    </div>
+          <?php require_once "msgmaj.php";?>
+           <div>
             <div id="onlineUser">
         <!-- affichage de l'id utilisateur dans la zone online encore incomplète car elle devrait contenir toutes les sessions actives-->
 <?php if(!empty($_COOKIE['userOnline'])):echo "your are connected as : ".($_COOKIE['userOnline']);endif;?>
             </div>
-        </div>
-            </main>
+    </div>
+            </main>  
         <div id="msgConsole">
             <div id="emoji">
             <?php 
@@ -102,5 +94,38 @@
         </div>
         <!--le lien pour s'inscrire le formulaire n'est pas encore construit-->
 			<footer><a href="inscription.php">inscription : remplissez ce formulaire !</a></footer>
+
+            <script>
+  $(document).ready(function() {                
+function refresh(){
+   // let pager=document.getElementById("wordviewer").innerHTML;
+    
+    /*$.ajax({
+        
+            url: 'msgmaj.php',
+            method: 'GET',
+            //data: 'wordviewer',
+            data: {func: 'msgmaj'},
+            cache:0,
+          
+         
+          /*
+            url: 'index.php',
+            dataType: "json",
+            data : {
+                function: $("majmsg"),
+            },
+*//*
+            success: function (data) {
+               //document.getElementById("wordviewer").innerHTML=pager;
+               $('#wordview').html(data);
+               console.log();
+            }
+        });*/
+        $('#wordviewer').load('msgmaj.php');
+}
+setInterval(refresh,1000);
+  });
+</script>
 			</body>
 </html>
